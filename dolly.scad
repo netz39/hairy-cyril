@@ -8,8 +8,8 @@ beltHeigth = 1;
 module mainbody() {
 	union(){
 		translate([-35, -15,0]) cube([70,30,dollyHeigth]);
-		translate([35,0,0]) rotate([0,0,45]) translate([-sqrt(450)/2,-sqrt(450)/2,0]) cube([sqrt(450),sqrt(450),dollyHeigth]);
-		translate([-35,0,0]) rotate([0,0,45]) translate([-sqrt(450)/2,-sqrt(450)/2,0]) cube([sqrt(450),sqrt(450),dollyHeigth]);
+		translate([35,0,0]) rotate([0,0,45]) translate([-sqrt(450)/2,-sqrt((dollyWidth*dollyWidth)/2)/2,0]) cube([sqrt((dollyWidth*dollyWidth)/2),sqrt((dollyWidth*dollyWidth)/2),dollyHeigth]);
+		translate([-35,0,0]) rotate([0,0,45]) translate([-sqrt(450)/2,-sqrt((dollyWidth*dollyWidth)/2)/2,0]) cube([sqrt((dollyWidth*dollyWidth)/2),sqrt((dollyWidth*dollyWidth)/2),dollyHeigth]);
 	}
 }
 
@@ -30,15 +30,13 @@ module ballBearing() {
 }
 
 module centralMount() {
-	translate([0,11.5,dollyHeigth/2])ballBearing();
-	translate([0,-11.5,dollyHeigth/2])ballBearing();
+	translate([0,dollyWidth/2-3.5,dollyHeigth/2])ballBearing();
+	translate([0,-(dollyWidth/2-3.5),dollyHeigth/2])ballBearing();
 	translate([0,15,dollyHeigth/2])rotate([90,0,0])cylinder(r=9,h=30);
 }
 
 module beltSlot() {
-	translate([beltHeigth-30,dollyWidth/2-beltWidth,0])cube([beltHeigth,beltWidth,dollyHeigth/3]);
-	translate([beltHeigth-30, dollyWidth/2-beltWidth,2*dollyHeigth/3])cube([beltHeigth,beltWidth,dollyHeigth/3]);
-	translate([-30,dollyWidth/2-beltWidth,0])cube([beltHeigth,beltWidth,dollyHeigth]);
+	translate([12,-5,0])cube([10,10,dollyHeigth]);
 }
 
 module complete() {
